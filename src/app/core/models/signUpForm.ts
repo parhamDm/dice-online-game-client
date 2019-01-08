@@ -4,5 +4,6 @@ export class signUpForm{
   password:string;
   repeatPassword:string;
   username:string;
-  picture:File
+  picture:File;
+  pictureName:string;
 }
