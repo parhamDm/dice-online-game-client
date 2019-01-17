@@ -6,7 +6,23 @@ export const environment = {
   production: false,
 
   gameURL:'http://localhost',
-  gamePort:'8080'
+  gamePort:'8080',
+
+  user:{
+    updateProfile : '/user/updateProfile',
+    getInfo : '/user/info',
+    uploadPix:'/user/uploadPix',
+    getPix:'/user/profile',
+    list:'/user/userList'
+  },
+  game:{
+    requestPlay:'/game/requestPlay',
+    requestStatus: '/game/requestStatus',
+    get: '/game/get',
+    dice:'/gameSession/dice',
+    status:'/gameSession/status',
+    hold:'/gameSession/hold',
+  }
 };
 
 /*

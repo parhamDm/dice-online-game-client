@@ -56,32 +56,33 @@
                [(ngModel)]="model.repeatPassword" name="repeatPassword"
                #repeatPassword="ngModel"
         >
+
         <div [hidden]="repeatPassword.valid || !repeatPassword.pristine"
              class="alert alert-danger" style="font-size: 10px">
           لطفا گذراژه را وارد کنید
         </div>
       </div>
       <!-- Phone number -->
-      <div class="mb-4">
-        <div class="input-default-wrapper mt-3">
+      <!--<div class="mb-4">-->
+        <!--<div class="input-default-wrapper mt-3">-->
 
-          <input type="file" id="picture" class="input-default-js" (change)="fileEvent($event)"
-                 [(ngModel)]="model.pictureName" name="picture"
-                 #repeatPassword="ngModel"
-          >
-          <label class="label-for-default-js rounded-right mb-3" for="picture"><span class="span-choose-file">
-            {{filename}}
-          </span>
-            <div class="float-right span-browse">Browse</div>
-          </label>
-        </div>
+          <!--<input type="file" id="picture" class="input-default-js" (change)="fileEvent($event)"-->
+                 <!--[(ngModel)]="model.pictureName" name="picture"-->
+                 <!--#repeatPassword="ngModel"-->
+          <!--&gt;-->
+          <!--<label class="label-for-default-js rounded-right mb-3" for="picture"><span class="span-choose-file">-->
+            <!--{{filename}}-->
+          <!--</span>-->
+            <!--<div class="float-right span-browse">Browse</div>-->
+          <!--</label>-->
+        <!--</div>-->
 
 
-        <div [hidden]="repeatPassword.valid || !repeatPassword.touched"
-             class="alert alert-danger" style="font-size: 10px">
-          فایل باید حداکثر 200kb باشد
-        </div>
-      </div>
+        <!--<div [hidden]="repeatPassword.valid || !repeatPassword.touched"-->
+             <!--class="alert alert-danger" style="font-size: 10px">-->
+          <!--فایل باید حداکثر 200kb باشد-->
+        <!--</div>-->
+      <!--</div>-->
 
       <div *ngIf="this.error!==''"
            class="alert alert-danger" style="font-size: 10px">

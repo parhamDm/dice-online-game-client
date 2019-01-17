@@ -1,0 +1,80 @@
+<div class="row" style="" >
+  <div class="col-md-3"></div>
+  <div class="col-md-6">
+    <form class="text-center border border-light p-5" (ngSubmit)="editProfile(loginForm.form);"
+          #loginForm="ngForm">
+      <img #image src="{{profileSrc}}" height="200px" width="200px" class="img-fluid rounded-circle z-depth-0">
+
+      <p class="h4 mb-4">تغییر پروفایل</p>
+
+      <div class="form-row mb-4">
+        <div class="col">
+          <input id="name" class="form-control" placeholder="نام "
+                 [(ngModel)]="model.firstName" name="firstName"
+                 #name="ngModel" required
+          >
+        </div>
+        <div class="col">
+          <input id="secondName" class="form-control" placeholder="نام خانوادگی"
+                 [(ngModel)]="model.lastName" name="secondName"
+                 #secondName="ngModel" required
+          >
+
+        </div>
+      </div>
+
+      <!-- E-mail -->
+      <div class="mb-4">
+        <input id="username" class="form-control" placeholder="نام کاربری"
+               [(ngModel)]="model.username" name="username"
+               #username="ngModel" required
+        >
+
+      </div>
+      <!-- Password -->
+      <div class="mb-4">
+        <input type="password" id="defaultLoginFormPassword" class="form-control" placeholder="گذرواژه" required
+               [(ngModel)]="model.password" name="password"
+               #password="ngModel"
+        >
+
+      </div>
+      <div class="mb-4">
+        <input type="password" id="defaultLoginFormPassword1" class="form-control" placeholder="تکرار گذرواژه" required
+               [(ngModel)]="model.repeatPassword" name="repeatPassword"
+               #repeatPassword="ngModel"
+        >
+      </div>
+      <!-- Phone number -->
+      <div class="mb-4">
+        <div class="input-default-wrapper mt-3">
+
+          <input type="file" id="picture" class="input-default-js" (change)="fileEvent($event)"
+                 [(ngModel)]="model.pictureName" name="picture"
+                 #repeatPassword="ngModel"
+          >
+          <label class="label-for-default-js rounded-right mb-3" for="picture"><span class="span-choose-file">
+            {{filename}}
+          </span>
+            <div class="float-right span-browse">Browse</div>
+          </label>
+        </div>
+
+
+        <div [hidden]="repeatPassword.valid || !repeatPassword.touched"
+             class="alert alert-danger" style="font-size: 10px">
+          فایل باید حداکثر 200kb باشد
+        </div>
+      </div>
+
+      <div *ngIf="this.error!==''"
+           class="alert alert-danger" style="font-size: 10px">
+        {{this.error}}
+      </div>
+
+      <!-- Sign up button -->
+      <button mdbBtn color="info" block="true" class="my-4" type="submit">Sign in</button>
+
+    </form>
+  </div>
+</div>

@@ -10,13 +10,21 @@ import {FormsModule} from "@angular/forms";
 import { SignUpComponent } from './modules/users/sign-up/sign-up.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {JwtInterceptor} from "./core/interceptors/jwt.interceptor";
+import { ProfileUpdateComponent } from './modules/users/profile-update/profile-update.component';
+import { UserPageComponent } from './modules/users/user-page/user-page.component';
+import { WaitingForPlayerComponent } from './modules/game/waiting-for-player/waiting-for-player.component';
+import { GamePageComponent } from './modules/game/game-page/game-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MasterComponent,
     LoginComponent,
-    SignUpComponent
+    SignUpComponent,
+    ProfileUpdateComponent,
+    UserPageComponent,
+    WaitingForPlayerComponent,
+    GamePageComponent
   ],
   imports: [
     BrowserModule,

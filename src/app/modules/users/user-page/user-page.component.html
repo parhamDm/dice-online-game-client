@@ -1,0 +1,31 @@
+<table mdbTable class="z-depth-1" style="text-align: right">
+  <thead>
+  <tr>
+    <th *ngFor="let head of headElements; let i = index" scope="col">{{head}}
+    </th>
+  </tr>
+  </thead>
+  <tbody dir="ltr">
+  <tr *ngFor="let el of elements; let i = index">
+    <th *ngIf="i+1 >= firstItemIndex && i < lastItemIndex" scope="row">{{el.totalPlays}}</th>
+    <td *ngIf="i+1 >= firstItemIndex && i < lastItemIndex">{{el.averageScore}}</td>
+    <td *ngIf="i+1 >= firstItemIndex && i < lastItemIndex">{{el.firstName +' '+el.secondName}}</td>
+    <td *ngIf="i+1 >= firstItemIndex && i < lastItemIndex">{{el.username}}</td>
+    <td *ngIf="i+1 >= firstItemIndex && i < lastItemIndex">{{el.online}}</td>
+    <td *ngIf="i+1 >= firstItemIndex && i < lastItemIndex">
+      <img  class="img-fluid rounded-circle z-depth-0" onerror="this.src='assets/149072.svg'" src="{{'/api/user/profile/'+el.username}}" width="70" height="70">
+    </td>
+  </tr>
+  </tbody>
+  <tfoot class="grey lighten-5 w-100">
+
+  <tr>
+    <td colspan="6">
+      <mdb-table-pagination (nextPageClick)="onNextPageClick($event)" (previousPageClick)="onPreviousPageClick($event)">
+      </mdb-table-pagination>
+    </td>
+  </tr>
+
+  </tfoot>
+</table>
+<button (click)="filter()">asdasdas</button>

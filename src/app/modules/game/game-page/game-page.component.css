@@ -1,0 +1,135 @@
+
+.master {
+  background: url("/../../../../assets/back.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;;
+  position: inherit;
+
+  color: #BABABA;
+}
+
+.main-div{
+  background-color: yellow;
+  width: 60%;
+  height: 70%;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  text-align: center;
+}
+.left{
+  width: 50%;
+  height: 100%;
+  float: left;
+  text-align: center;
+
+}
+
+.right{
+  width: 50%;
+  height: 100%;
+  background-color: #FFFFFF;
+  float: right;
+  text-align: center;
+}
+.text-inside-div{
+  position: absolute;
+  width: 100%;
+  float: inherit;
+  text-align: center;
+
+}
+
+.new-game{
+  margin-top: 2%;
+  margin-bottom: 3%;
+  font-size: 12px;
+}
+
+.dice{
+  margin: 2px;
+  width: 10%;
+  height: 10%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.dice2{
+  margin-top: 10%;
+  width: 10%;
+  height: 10%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+/*.roll-dice{*/
+/*margin-top: 10%;*/
+/*}*/
+
+.player{
+  margin-top: 20%;
+  position: inherit;
+  font-size: 30px;
+}
+
+.score{
+  margin-top: 5%;
+  font-size: 80px;
+}
+
+.score-box{
+  padding: 2%;
+  background-color: #E65049;
+  width: 30%;
+  font-size: 20px;
+  margin: 30% auto 10%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border: 1px solid #E65049;
+  border-radius: 5%;
+}
+
+.roll-dice{
+  margin-top: 1%;
+  font-size: 15px;
+}
+.hold{
+  margin-top: 1%;
+  font-size: 15px;
+
+}
+.input-score{
+  text-align: center !important;
+}
+
+i{
+  color: #E65049;
+}
+
+.score{
+  margin-top: 1%;
+  margin-bottom: 5%;
+  font-size: 25px;
+}
+
+.button {
+  color: #BABABA !important;
+  text-transform: uppercase;
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 5px;
+  display: inline-block;
+  border: none;
+}
+.button:hover {
+  background: #eeeeee;
+  letter-spacing: 1px;
+  -webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+  -moz-box-shadow: 5px 5px 5px 5px rgba(0,0,0,0.57);
+  box-shadow: 5px 40px -10px rgba(0,0,0,0.57);
+  transition: all 0.4s ease 0s;
+}
+
+/*.center {*/
+/*text-align: center;*/
+/*}*/

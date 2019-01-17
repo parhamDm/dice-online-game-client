@@ -39,9 +39,6 @@ export class SignUpComponent implements OnInit {
       this.error="پسوورد و تکرار آن مطابقت ندارد";
       return;
     }
-    this.model.picture=this.profilePic;
-    this.uploadSingleFile(this.profilePic);
-    console.log(this.model.picture);
     this.userService.register(this.model).subscribe(model=>{
 
       if(model.token==="INVALID"){
@@ -50,7 +47,6 @@ export class SignUpComponent implements OnInit {
         //valid
         localStorage.setItem("token","Bearer "+ model.token);
         localStorage.setItem("role",model.role);
-        this.uploadSingleFile(this.profilePic)
         // this.router.navigateByUrl('/');
       }
       console.log(model)
@@ -58,7 +54,4 @@ export class SignUpComponent implements OnInit {
 
   }
 
-  uploadSingleFile(file) {
-    this.userService.uploadpicture(file)
-  }
 }

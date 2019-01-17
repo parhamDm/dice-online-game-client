@@ -10,7 +10,7 @@ export class HttpService {
   constructor() { }
 
   public uriCreator(requestedUri: string): string {
-    return environment.gameURL + ':' + environment.gamePort + requestedUri;
+    return '/api' + requestedUri;
   }
 
   public getHeader()  {
