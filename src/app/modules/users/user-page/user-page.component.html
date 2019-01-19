@@ -1,31 +1,58 @@
-<table mdbTable class="z-depth-1" style="text-align: right">
-  <thead>
-  <tr>
-    <th *ngFor="let head of headElements; let i = index" scope="col">{{head}}
-    </th>
-  </tr>
-  </thead>
-  <tbody dir="ltr">
-  <tr *ngFor="let el of elements; let i = index">
-    <th *ngIf="i+1 >= firstItemIndex && i < lastItemIndex" scope="row">{{el.totalPlays}}</th>
-    <td *ngIf="i+1 >= firstItemIndex && i < lastItemIndex">{{el.averageScore}}</td>
-    <td *ngIf="i+1 >= firstItemIndex && i < lastItemIndex">{{el.firstName +' '+el.secondName}}</td>
-    <td *ngIf="i+1 >= firstItemIndex && i < lastItemIndex">{{el.username}}</td>
-    <td *ngIf="i+1 >= firstItemIndex && i < lastItemIndex">{{el.online}}</td>
-    <td *ngIf="i+1 >= firstItemIndex && i < lastItemIndex">
-      <img  class="img-fluid rounded-circle z-depth-0" onerror="this.src='assets/149072.svg'" src="{{'/api/user/profile/'+el.username}}" width="70" height="70">
-    </td>
-  </tr>
-  </tbody>
-  <tfoot class="grey lighten-5 w-100">
+<!--<table mdbTable class="z-depth-1" style="text-align: right">-->
+  <!--<thead>-->
+  <!--<tr>-->
+    <!--<th *ngFor="let head of headElements; let i = index" scope="col">{{head}}-->
+    <!--</th>-->
+  <!--</tr>-->
+  <!--</thead>-->
+  <!--<tbody dir="ltr">-->
+  <!--<tr *ngFor="let el of elements; let i = index">-->
+    <!--<th *ngIf="i+1 >= firstItemIndex && i < lastItemIndex" scope="row">{{el.totalPlays}}</th>-->
+    <!--<td *ngIf="i+1 >= firstItemIndex && i < lastItemIndex">{{el.averageScore}}</td>-->
+    <!--<td *ngIf="i+1 >= firstItemIndex && i < lastItemIndex">{{el.firstName +' '+el.secondName}}</td>-->
+    <!--<td *ngIf="i+1 >= firstItemIndex && i < lastItemIndex">{{el.username}}</td>-->
+    <!--<td *ngIf="i+1 >= firstItemIndex && i < lastItemIndex">{{el.online}}</td>-->
+    <!--<td *ngIf="i+1 >= firstItemIndex && i < lastItemIndex">-->
+      <!--<img  class="img-fluid rounded-circle z-depth-0" onerror="this.src='assets/149072.svg'" src="{{'/api/user/profile/'+el.username}}" width="70" height="70">-->
+    <!--</td>-->
+  <!--</tr>-->
+  <!--</tbody>-->
+  <!--<tfoot class="grey lighten-5 w-100">-->
 
-  <tr>
-    <td colspan="6">
-      <mdb-table-pagination (nextPageClick)="onNextPageClick($event)" (previousPageClick)="onPreviousPageClick($event)">
-      </mdb-table-pagination>
-    </td>
-  </tr>
+  <!--<tr>-->
+    <!--<td colspan="6">-->
+      <!--<mdb-table-pagination (nextPageClick)="onNextPageClick($event)" (previousPageClick)="onPreviousPageClick($event)">-->
+      <!--</mdb-table-pagination>-->
+    <!--</td>-->
+  <!--</tr>-->
 
-  </tfoot>
-</table>
-<button (click)="filter()">asdasdas</button>
+  <!--</tfoot>-->
+<!--</table>-->
+<!--<button (click)="filter()">asdasdas</button>-->
+<div class="row">
+  <div class="col-md-4 col-xs-2" *ngFor="let element of this.elements">
+    <div class="card" style="text-align: center;margin: 5px">
+
+      <!--Card image-->
+      <div class="view overlay hm-white-slight "  ripple-radius>
+        <img onerror="this.src='assets/149072.svg'" src="{{'/api/user/profile/'+element.username}}"
+             class="portrait img-fluid rounded-circle z-depth-0 center-image" alt="#">
+        <a href="#">
+          <div class="mask"></div>
+        </a>
+      </div>
+      <!--/.Card image-->
+
+      <!--Card content-->
+      <div class="card-block">
+        <!--Title-->
+        <h4 class="card-title">{{element.username}}</h4>
+        <!--Text-->
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <a href="#" class="btn btn-primary" ripple-radius>Button</a>
+      </div>
+      <!--/.Card content-->
+
+    </div>
+  </div>
+</div>

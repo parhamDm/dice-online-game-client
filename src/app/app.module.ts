@@ -14,6 +14,10 @@ import { ProfileUpdateComponent } from './modules/users/profile-update/profile-u
 import { UserPageComponent } from './modules/users/user-page/user-page.component';
 import { WaitingForPlayerComponent } from './modules/game/waiting-for-player/waiting-for-player.component';
 import { GamePageComponent } from './modules/game/game-page/game-page.component';
+import { GameCommentsComponent } from './modules/admin/game-comments/game-comments.component';
+import { UserCommentsComponent } from './modules/admin/user-comments/user-comments.component';
+import { CreateComponent } from './modules/game/create/create.component';
+import { GameListComponent } from './modules/game/game-list/game-list.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +28,11 @@ import { GamePageComponent } from './modules/game/game-page/game-page.component'
     ProfileUpdateComponent,
     UserPageComponent,
     WaitingForPlayerComponent,
-    GamePageComponent
+    GamePageComponent,
+    GameCommentsComponent,
+    UserCommentsComponent,
+    CreateComponent,
+    GameListComponent
   ],
   imports: [
     BrowserModule,

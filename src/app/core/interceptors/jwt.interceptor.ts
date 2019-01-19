@@ -11,8 +11,8 @@ export class JwtInterceptor implements HttpInterceptor {
 
 
     const idToken = localStorage.getItem("token");
-    if(req.url == environment.gameURL+':'+environment.gamePort+'/user/signup'||
-      req.url == environment.gameURL+':'+environment.gamePort+'user/login'){
+    if(req.url == '/user/signup'||
+      req.url == 'user/login'){
       return next.handle(req);
 
     }

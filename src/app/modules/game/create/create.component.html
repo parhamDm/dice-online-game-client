@@ -1,0 +1,65 @@
+<div class="row" style="" >
+  <div class="col-md-3"></div>
+  <div class="col-md-6">
+    <form dir="ltr" class="text-center border border-light p-5"
+          #loginForm="ngForm" (ngSubmit)="performLogin(loginForm.form);">
+
+      <p class="h4 mb-5">طراحی بازی</p>
+
+
+      <div class="mb-4">
+        <input id="gameName" class="form-control" placeholder="نام بازی"
+               [(ngModel)]="model.gameName" name="gameName"
+               #gameName="ngModel" required
+        >
+        <div [hidden]="gameName.valid || gameName.pristine"
+             class="alert alert-danger" style="font-size: 10px">
+          لطفا نام بازی را وارد کنید
+        </div>
+      </div>
+
+      <div class="mb-4">
+        <input type="number" id="defaultLoginFormPassword" class="form-control" placeholder="محدودیت امتیاز" required
+               [(ngModel)]="model.scoreLimit" name="scoreLimit"
+               #scoreLimit="ngModel"
+        >
+        <div [hidden]="scoreLimit.valid || scoreLimit.pristine"
+             class="alert alert-danger" style="font-size: 10px">
+          لطفا محدودیت امتیاز را وارد کنید
+        </div>
+      </div>
+
+      <div class="mb-4">
+        <input type="text" id="currentZeroMaker" class="form-control" placeholder="صفر کننده ها" required
+               [(ngModel)]="model.currentZeroMaker" name="currentZeroMaker"
+               #currentZeroMaker="ngModel"
+        >
+        <div [hidden]="currentZeroMaker.valid || currentZeroMaker.pristine"
+             class="alert alert-danger" style="font-size: 10px">
+          لطفا صفرکننده ها را وارد کنید
+        </div>
+      </div>
+
+      <div class="mb-4">
+        <input type="number" id="dicePerTurn" class="form-control" placeholder="تعداد تاس در هر دور بازی"
+               [(ngModel)]="model.dicePerTurn" name="dicePerTurn"
+               #dicePerTurn="ngModel"
+        >
+
+      </div>
+
+      <div class="mb-1">
+        <select [(ngModel)]="model.numberOfDices" name="numberOfDices"
+                #numberOfDices="ngModel" class="browser-default custom-select">
+          <option [ngValue]="1"  value="1" selected>1</option>
+          <option [ngValue]="2">2</option>
+          <option [ngValue]="4">4</option>
+        </select>
+      </div>
+
+      <button type="submit" class="btn btn-primary" [disabled]="!loginForm.valid">افزودن</button>
+
+
+    </form>
+  </div>
+</div>

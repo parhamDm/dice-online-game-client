@@ -52,4 +52,15 @@ export class GameService {
     };
     return this.http.post(existsRequestUri,object).pipe()
   }
+
+
+  addGame(model:any): Observable<any> {
+    const existsRequestUri = this.httpService.uriCreator(environment.game.create);
+    return this.http.post(existsRequestUri,model).pipe()
+  }
+
+  listGame(): Observable<any> {
+    const existsRequestUri = this.httpService.uriCreator(environment.game.list);
+    return this.http.get(existsRequestUri).pipe()
+  }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {GameService} from "../../../core/services/game.service";
 import {ResponseBean} from "../../../core/models/ResponseBean.model";
 import {Observable, Subscription} from "rxjs/Rx";
@@ -13,10 +13,10 @@ import {Router} from "@angular/router";
 export class WaitingForPlayerComponent implements OnInit {
   isFinding:boolean= false;
 
+  @Input()
   gameId:number= 1;
 
   subscription: Subscription;
-
   constructor(private gamseService:GameService,
               private router :Router) {
 
@@ -25,10 +25,6 @@ export class WaitingForPlayerComponent implements OnInit {
   }
 
   ngOnInit() {
-    // let exampleSocket = new SockJS("http://localhost:4200/api/ws","rest");
-    // exampleSocket.onmessage = function(event) {
-    //   console.log(event)
-    // }
 
 
     const source = interval(5000);
@@ -58,7 +54,7 @@ export class WaitingForPlayerComponent implements OnInit {
 
   requestPlay(){
     this.gamseService.RequestPlay(this.gameId).subscribe((model:ResponseBean)=>{
-      if(model.statusCode===0){
+      if(model.statusCode===0||model.statusCode===1){
         this.isFinding = true;
       }
     });

@@ -7,6 +7,11 @@ import {ProfileUpdateComponent} from "./modules/users/profile-update/profile-upd
 import {UserPageComponent} from "./modules/users/user-page/user-page.component";
 import {WaitingForPlayerComponent} from "./modules/game/waiting-for-player/waiting-for-player.component";
 import {GamePageComponent} from "./modules/game/game-page/game-page.component";
+import {GameCommentsComponent} from "./modules/admin/game-comments/game-comments.component";
+import {IsAdminGuard} from "./core/guards/is-admin.guard";
+import {UserCommentsComponent} from "./modules/admin/user-comments/user-comments.component";
+import {CreateComponent} from "./modules/game/create/create.component";
+import {GameListComponent} from "./modules/game/game-list/game-list.component";
 
 const routes: Routes = [
   {
@@ -37,7 +42,24 @@ const routes: Routes = [
         path: 'waitForGame',
         component: WaitingForPlayerComponent,
       },
-
+      {
+        path: 'gameCommentApprove',
+        component: GameCommentsComponent,
+        canActivate: [IsAdminGuard]
+      },
+      {
+        path: 'userCommentApprove',
+        component: UserCommentsComponent,
+        canActivate: [IsAdminGuard]
+      },
+      {
+        path: 'createGame',
+        component: CreateComponent,
+      },
+      {
+        path: 'listGame',
+        component: GameListComponent,
+      },
     ]
   },
 ];

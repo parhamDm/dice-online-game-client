@@ -64,6 +64,37 @@ export class UsermanagementService {
     const existsRequestUri = this.httpService.uriCreator(environment.user.list);
     return this.http.get(existsRequestUri).pipe()
   }
+  getGameUnapprovedCommentsList(): Observable<any> {
+    const existsRequestUri = this.httpService.uriCreator(environment.comment.unApprovedComments);
+    return this.http.get(existsRequestUri).pipe()
+  }
 
+  getGameCommentsList(): Observable<any> {
+    const existsRequestUri = this.httpService.uriCreator(environment.comment.approvedGameComments);
+    return this.http.get(existsRequestUri).pipe()
+  }
+
+  changeStatusGame(commentId, status): Observable<any> {
+    const existsRequestUri = this.httpService.uriCreator(environment.comment.changeStatusGame+
+      "?commentId="+commentId+"&status="+status);
+    return this.http.get(existsRequestUri).pipe()
+  }
+
+
+  getUserUnapprovedCommentsList(): Observable<any> {
+    const existsRequestUri = this.httpService.uriCreator(environment.comment.unApprovedUserComment);
+    return this.http.get(existsRequestUri).pipe()
+  }
+
+  getUserCommentsList(): Observable<any> {
+    const existsRequestUri = this.httpService.uriCreator(environment.comment.approvedUserComments);
+    return this.http.get(existsRequestUri).pipe()
+  }
+
+  changeStatusUser(commentId, status): Observable<any> {
+    const existsRequestUri = this.httpService.uriCreator(environment.comment.changeStatusUser+
+      "?commentId="+commentId+"&status="+status);
+    return this.http.get(existsRequestUri).pipe()
+  }
 
 }

@@ -1,0 +1,61 @@
+<br/>
+
+<div class="row col-md-6">
+  <h4>مشاهده</h4>
+</div>
+<div class="row col-md-12" style="margin-bottom: 5px">
+  <div class="row col-md-2">
+    <button type="button" class="btn btn-secondary" (click)="getCommsAll()" style="margin: 2px">تمام کامنت ها</button>
+  </div>
+  <div class="row col-md-۴">
+    <button type="button" class="btn btn-secondary" (click)="getCommsNotAll()" style="margin: 2px">کامنت های تایید نشده</button>
+  </div>
+</div>
+
+<div class="row col-md-6">
+  <h4>مرتب سازی بر اساس:</h4>
+</div>
+<div class="row col-md-12" style="margin-bottom: 5px">
+  <div class="row col-md-2">
+    <button type="button" class="btn btn-secondary" (click)="filterByUsername()" style="margin: 2px">نام کاربری</button>
+  </div>
+  <div class="row col-md-2">
+    <button type="button" class="btn btn-secondary" (click)="filterByGamesDate()" style="margin: 2px">تاریخ</button>
+  </div>
+</div>
+<div class="row col-md-12">
+  <table mdbTable class="z-depth-1" style="text-align: right">
+    <thead>
+    <tr>
+      <th *ngFor="let head of headElements; let i = index" scope="col">{{head}}
+      </th>
+    </tr>
+    </thead>
+    <tbody dir="ltr">
+    <tr *ngFor="let el of elements; let i = index">
+      <th *ngIf="i+1 >= firstItemIndex && i < lastItemIndex" scope="row">{{el.fromUsername}}</th>
+      <td *ngIf="i+1 >= firstItemIndex && i < lastItemIndex">{{el.toUsername}}</td>
+      <td *ngIf="i+1 >= firstItemIndex && i < lastItemIndex">{{el.score}}</td>
+      <td *ngIf="i+1 >= firstItemIndex && i < lastItemIndex">{{el.comment}}</td>
+      <td *ngIf="i+1 >= firstItemIndex && i < lastItemIndex">{{el.date}}</td>
+      <td *ngIf="(i+1 >= firstItemIndex && i < lastItemIndex)&&!isAllComments">
+        <button type="button" class="btn btn-success" (click)="approveOrdeny(el.id,1)" style="margin: 2px">قبول کردن</button>
+        <button type="button" class="btn btn-danger" style="margin: 2px" (click)="approveOrdeny(el.id,2)">رد کردن</button>
+      </td>
+      <td *ngIf="(i+1 >= firstItemIndex && i < lastItemIndex)&&isAllComments">
+        {{el.status}}
+      </td>
+    </tr>
+    </tbody>
+    <tfoot class="grey lighten-5 w-100">
+
+    <tr>
+      <td colspan="6">
+        <mdb-table-pagination (nextPageClick)="onNextPageClick($event)" (previousPageClick)="onPreviousPageClick($event)">
+        </mdb-table-pagination>
+      </td>
+    </tr>
+
+    </tfoot>
+  </table>
+</div>

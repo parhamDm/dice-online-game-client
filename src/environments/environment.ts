@@ -22,6 +22,18 @@ export const environment = {
     dice:'/gameSession/dice',
     status:'/gameSession/status',
     hold:'/gameSession/hold',
+
+    create:'/game/create',
+    list:'/game/AllGames',
+
+  },
+  comment:{
+    unApprovedComments:'/comment/unAprrovedGame',
+    changeStatusGame:'/comment/changeStatusGame',
+    approvedGameComments:'/comment/listOfGameComment',
+    unApprovedUserComment:'/comment/unApprovedUserComment',
+    changeStatusUser:'/comment/changeStatusUser',
+    approvedUserComments:'/comment/listOfUserComment'
   }
 };
 

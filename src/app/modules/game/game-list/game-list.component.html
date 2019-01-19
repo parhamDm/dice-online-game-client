@@ -1,0 +1,105 @@
+<div class="row">
+  <div class="col-md-3 col-xs-2" *ngFor="let element of this.elements">
+    <div class="card" style="text-align: center;margin: 5px;padding: 5px">
+
+      <!--Card image-->
+      <div class="view overlay hm-white-slight "  ripple-radius>
+        <img onerror="this.src='assets/149072.svg'" src="{{'/api/user/profile/'+element.username}}"
+             class="portrait img-fluid rounded-circle z-depth-0 center-image" alt="no picture">
+        <a href="#">
+          <div class="mask"></div>
+        </a>
+      </div>
+      <!--/.Card image-->
+
+      <!--Card content-->
+      <div class="card-block">
+        <!--Title-->
+        <h4 class="card-title">{{element.gameName}}</h4>
+        <!--Text-->
+        <p class="card-text">میانگین امتیاز بازی:
+        {{element.avgScore|number :'1.1-2'}}
+        </p>
+        <p class="card-text">بازی های در حال انجام:
+          {{element.playingSessions}}
+        </p>
+        <p class="card-text">تاریخ افزوده شدن:
+          <br/>
+          {{element.date|slice:0:10}}
+        </p>
+        <p class="card-text">کاربر سازنده
+          {{element.username}}
+        </p>
+        <p class="card-text">تعداد کل بازی های انجام شده
+          {{element.timesPlayed}}
+        </p>
+        <div>
+          <button class="btn btn-secondary" style="margin: 2px"
+                  (click)="startGame(element.id)">شروع بازی</button>
+        </div>
+        <div>
+          <button class="btn btn-secondary" style="margin: 2px;"
+                  (click)="showComm(element.id)">مشاهده نظرات</button>
+
+        </div>
+      </div>
+      <!--/.Card content-->
+
+    </div>
+  </div>
+</div>
+
+
+<div mdbModal #basicModal="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close pull-right" aria-label="Close" (click)="basicModal.hide()">
+          <span aria-hidden="true">×</span>
+        </button>
+        <h4 class="modal-title w-100" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        <app-waiting-for-player [gameId]="gameId"></app-waiting-for-player>
+      </div>
+      <div class="modal-footer">
+        <button type="button" mdbBtn color="secondary" class="waves-light" aria-label="Close" (click)="basicModal.hide()" mdbWavesEffect>بستن</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div mdbModal #Modal2="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close pull-right" aria-label="Close" (click)="Modal2.hide()">
+          <span aria-hidden="true">×</span>
+        </button>
+        <h4 class="modal-title w-100" id="myModalLabel2">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        <table class="table" style="text-align: right">
+          <thead>
+          <tr>
+            <th scope="col">امتیاز</th>
+            <th scope="col">نظر</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let comment of comments">
+
+            <td *ngIf="comment.status==1">{{comment.score}}</td>
+            <td *ngIf="comment.status==1">{{comment.comment}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" mdbBtn color="secondary" class="waves-light" aria-label="Close" (click)="Modal2.hide()" mdbWavesEffect>بستن</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
