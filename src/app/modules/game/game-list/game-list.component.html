@@ -1,3 +1,20 @@
+<div class="row col-md-12" style="margin: 3%">
+<h3>
+فیلتر بر اساس:
+</h3>
+</div>
+<div class="row col-md-12" style="margin-bottom: 5px">
+  <div class="row col-md-2">
+    <button type="button" class="btn btn-secondary" (click)="filterByGamesDate()" style="margin: 2px">تاریخ افزوده شدن</button>
+  </div>
+  <div class="row col-md-2">
+    <button type="button" class="btn btn-secondary" (click)="filterByAvgScore()" style="margin: 2px">میانگین امتیاز</button>
+  </div>
+  <div class="row col-md-3">
+    <button type="button" class="btn btn-secondary" (click)="filterByGamesOnline()" style="margin: 2px">تعداد بازی های در حال انجام</button>
+  </div>
+</div>
+
 <div class="row">
   <div class="col-md-3 col-xs-2" *ngFor="let element of this.elements">
     <div class="card" style="text-align: center;margin: 5px;padding: 5px">

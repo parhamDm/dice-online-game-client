@@ -8,5 +8,6 @@ export class GameStatusResponse {
   score:number;
   opponentScore:number;
   opponentCurrent:number;
+  opponentId:number;
 
 }

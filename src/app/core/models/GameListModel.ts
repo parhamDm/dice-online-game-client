@@ -14,7 +14,7 @@ export class GameListModel{
   date:string;
   timesPlayed:number;
   gameComments:Array<GameComment>;
-
+  playingSessions:number;
   avgScore:number;
 
 }

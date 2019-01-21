@@ -1,9 +1,13 @@
-import {Component, ElementRef, OnInit} from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {ActivatedRoute, Router} from "@angular/router";
 import {GameService} from "../../../core/services/game.service";
 import {GameStatusResponse} from "../../../core/models/GameStatusResponse.model";
 import {Subscription} from "rxjs/Rx";
 import {interval} from "rxjs/index";
+import {Comment} from "../../../core/models/Comment.model";
+import {UsermanagementService} from "../../../core/services/usermanagement.service";
+import {ResponseBean} from "../../../core/models/ResponseBean.model";
+import {MDBModalService} from "angular-bootstrap-md";
 
 
 
@@ -22,7 +26,7 @@ export class GamePageComponent implements OnInit {
   currentZeroMakers:Array<number>;
 
   scoreLimit:number;
-
+  model: Comment=new Comment;
   isPlayerTurn:boolean=true;
 
   playerCurrent:number=0;
@@ -32,15 +36,19 @@ export class GamePageComponent implements OnInit {
   opponentScore:number=0;
   message:string;
   subscription: Subscription;
-
+  gameStatus:string;
   dicesArray =[1,1,1,1];
+  private opponentId: number;
+  @ViewChild('frame')modal: MDBModalService;
 
 
 
 
   constructor(private route: ActivatedRoute,
               private elRef: ElementRef,
+              private router: Router,
               private gameService: GameService,
+              private userService: UsermanagementService,
               ) {
     this.gameId = this.route.snapshot.paramMap.get("gameId");
     elRef.nativeElement.ownerDocument.body.style.cssText=
@@ -61,7 +69,7 @@ export class GamePageComponent implements OnInit {
       }
     );
 
-    const source = interval(1000);
+    const source = interval(1500);
 
     this.subscription = source.subscribe(val => {
       this.whosTurn();
@@ -72,6 +80,8 @@ export class GamePageComponent implements OnInit {
     this.currentZeroMakers=game.currentZeroMaker;
     this.scoreLimit = game.scoreLimit;
     this.numberOfDices=game.numberOfDices;
+
+    console.log(this.numberOfDices)
   }
 
 
@@ -100,10 +110,14 @@ export class GamePageComponent implements OnInit {
 
 
   private whosTurn(){
-
     this.gameService.getGameStatus().subscribe(
       (model:GameStatusResponse)=>{
-
+        if(model.statusCode=="4"){
+          this.finalizeGame(4)
+        }
+        if(model.statusCode=="5"){
+          this.finalizeGame(5)
+        }
         if(!this.isPlayerTurn){
           if(model.dices.length!==0)
             this.dicesArray=model.dices;
@@ -112,7 +126,8 @@ export class GamePageComponent implements OnInit {
         // this.playerScore=model.score;
         this.isPlayerTurn=model.yourTurn;
         this.opponentScore=model.opponentScore;
-        this.opponentCurrent=model.opponentCurrent
+        this.opponentCurrent=model.opponentCurrent;
+        this.model.toUserId =model.opponentId;
       }
     )
   }
@@ -136,4 +151,25 @@ export class GamePageComponent implements OnInit {
     )
   }
 
+  performComment(form){
+    this.model.gameId= +this.gameId;
+    this.userService.addComment(this.model).subscribe(
+      (model:ResponseBean)=>{
+        console.log(model);
+        window.location.replace('/listGame')
+      }
+    )
+  }
+
+  private finalizeGame(number: number) {
+    if(number==4){
+      this.gameStatus="شما بردید"
+    }
+    if(number==5){
+      this.gameStatus="شما باختید"
+    }
+    this.isPlayerTurn=false;
+    this.subscription.unsubscribe();
+    this.modal.show("");
+  }
 }

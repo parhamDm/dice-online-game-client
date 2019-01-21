@@ -1,0 +1,66 @@
+<mdb-carousel dir="ltr" class="carousel slide carousel-fade" [animation]="'fade'">
+
+  <mdb-carousel-item *ngFor="let el of elements">
+    <div class="view w-100">
+      <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(6).jpg" alt="Second slide">
+      <div class="mask rgba-black-strong waves-light" mdbWavesEffect></div>
+    </div>
+    <div class="carousel-caption">
+      <h4 class="h3-responsive">{{el.label}}</h4>
+      <p>{{el.game.gameName}}</p>
+      <h4 class="h3-responsive">امتیاز</h4>
+      <p>{{el.avg}}</p>
+      <h4 class="h3-responsive">تاریخ</h4>
+      <p>{{el.game.date}}</p>
+    </div>
+  </mdb-carousel-item>
+
+</mdb-carousel>
+
+<div class="row">
+  <div class="col-md-2 col-xs-2" *ngFor="let element of this.items">
+    <div class="card" style="text-align: center;margin: 5px">
+
+      <!--Card image-->
+      <div class="view overlay hm-white-slight "  ripple-radius>
+        <img onerror="this.src='assets/149072.svg'" src="{{'/api/user/profile/'+element.username}}"
+             class="portrait img-fluid rounded-circle z-depth-0 center-image" alt="#">
+        <a href="#">
+          <div class="mask"></div>
+        </a>
+      </div>
+      <!--/.Card image-->
+
+      <!--Card content-->
+      <div class="card-block">
+        <!--Title-->
+        <h4 class="card-title" [style.color]="!element.friend ? 'black':'red'">{{element.username}}</h4>
+
+        <p *ngIf="element.online" class="card-text">آنلاین
+
+        </p>
+        <p *ngIf="!element.online" class="card-text">آفلاین
+
+        </p>
+
+      </div>
+      <!--/.Card content-->
+
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-2">
+    <a class="btn special-btn" routerLink="/profile" style="color: white"><i class="fa fa-user-circle" ></i>
+    پروفایل
+    </a>
+  </div>
+  <div class="col-md-2">
+    <a class="btn special-btn" style="color: white"><i class="fa fa-user-circle"></i>
+      بازی ها
+    </a>
+  </div>
+  <br/>
+</div>
+

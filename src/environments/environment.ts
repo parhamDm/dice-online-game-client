@@ -13,7 +13,8 @@ export const environment = {
     getInfo : '/user/info',
     uploadPix:'/user/uploadPix',
     getPix:'/user/profile',
-    list:'/user/userList'
+    list:'/user/userList',
+    slider:'/user/sliderUsers'
   },
   game:{
     requestPlay:'/game/requestPlay',
@@ -26,6 +27,7 @@ export const environment = {
     create:'/game/create',
     list:'/game/AllGames',
 
+    slider:'/game/getGamesForSlider'
   },
   comment:{
     unApprovedComments:'/comment/unAprrovedGame',
@@ -33,7 +35,9 @@ export const environment = {
     approvedGameComments:'/comment/listOfGameComment',
     unApprovedUserComment:'/comment/unApprovedUserComment',
     changeStatusUser:'/comment/changeStatusUser',
-    approvedUserComments:'/comment/listOfUserComment'
+    approvedUserComments:'/comment/listOfUserComment',
+    addComment:'/comment/addComment'
+
   }
 };
 

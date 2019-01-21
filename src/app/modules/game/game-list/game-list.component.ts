@@ -11,8 +11,8 @@ import {MDBModalRef, MDBModalService} from "angular-bootstrap-md";
   styleUrls: ['./game-list.component.scss']
 })
 export class GameListComponent implements OnInit {
-  elements: Array<GameListModel> = [];
-
+  elements: any = [];
+  users:any= [];
   @ViewChild('basicModal')mdbTablePagination: MDBModalService;
   @ViewChild('Modal2') modal2: MDBModalService;
   comments: Array<GameComment>=[];
@@ -55,6 +55,25 @@ export class GameListComponent implements OnInit {
     this.comments=this.elements.find(x => id===x.id).gameComments;
     console.log(this.comments);
     this.modal2.show("");
+  }
 
+  filterByGamesDate(){
+    this.elements.sort(function (a,b) {
+      return a.date < b.date;
+    });
+  }
+
+  filterByAvgScore(){
+    this.elements.sort(function (a,b) {
+      return a.avgScore < b.avgScore;
+    });
+  }
+
+
+
+  filterByGamesOnline(){
+    this.elements.sort(function (a,b) {
+      return a.playingSessions < b.playingSessions;
+    });
   }
 }

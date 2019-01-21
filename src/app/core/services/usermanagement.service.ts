@@ -11,8 +11,8 @@ import {signUpForm} from "../models/signUpForm";
 })
 export class UsermanagementService {
 
-  constructor(    private http: HttpClient,
-                  private httpService: HttpService) {
+  constructor(private http: HttpClient,
+              private httpService: HttpService) {
 
   }
 
@@ -94,6 +94,34 @@ export class UsermanagementService {
   changeStatusUser(commentId, status): Observable<any> {
     const existsRequestUri = this.httpService.uriCreator(environment.comment.changeStatusUser+
       "?commentId="+commentId+"&status="+status);
+    return this.http.get(existsRequestUri).pipe()
+  }
+
+  addComment(comment): Observable<any> {
+    const existsRequestUri = this.httpService.uriCreator(environment.comment.addComment);
+    return this.http.post(existsRequestUri,comment).pipe()
+  }
+
+
+  hasLoggedIn(){
+    return !!localStorage["token"];
+
+  }
+
+  isAdmin(){
+    return localStorage["role"] == 'ROLE_admin';
+  }
+
+  logout(){
+    localStorage.clear();
+  }
+
+  getGamesSlider(): Observable<any> {
+    const existsRequestUri = this.httpService.uriCreator(environment.game.slider);
+    return this.http.get(existsRequestUri).pipe()
+  }
+  getUsersSlider(): Observable<any> {
+    const existsRequestUri = this.httpService.uriCreator(environment.user.slider);
     return this.http.get(existsRequestUri).pipe()
   }
 

@@ -18,6 +18,11 @@ import { GameCommentsComponent } from './modules/admin/game-comments/game-commen
 import { UserCommentsComponent } from './modules/admin/user-comments/user-comments.component';
 import { CreateComponent } from './modules/game/create/create.component';
 import { GameListComponent } from './modules/game/game-list/game-list.component';
+import { MainPageComponent } from './modules/main/main-page/main-page.component';
+import {AccordionModule} from 'primeng/accordion';
+import {MenuItem} from 'primeng/api';
+import {CarouselModule, MultiSelectModule} from "primeng/primeng";                 //api
+import { NguCarouselModule } from '@ngu/carousel';
 
 @NgModule({
   declarations: [
@@ -32,14 +37,19 @@ import { GameListComponent } from './modules/game/game-list/game-list.component'
     GameCommentsComponent,
     UserCommentsComponent,
     CreateComponent,
-    GameListComponent
+    GameListComponent,
+    MainPageComponent
   ],
   imports: [
     BrowserModule,
     MDBBootstrapModule.forRoot(),
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    AccordionModule,
+    CarouselModule,
+    MultiSelectModule,
+    NguCarouselModule
   ],
   providers: [    {
     provide: HTTP_INTERCEPTORS,

@@ -2,23 +2,31 @@
 
   <!-- Navbar brand -->
   <mdb-navbar-brand dir="ltr">
-    <a class="navbar-brand" href="#">Navbar</a>
+    <a class="navbar-brand"  href="#">بازی تاس</a>
   </mdb-navbar-brand>
 
   <!-- Collapsible content -->
   <links>
 
-    <ul class="navbar-nav ml-auto nav-flex-icons">
+    <ul  *ngIf="userService.hasLoggedIn()"  class="navbar-nav ml-auto nav-flex-icons">
       <li class="nav-item dropdown" dropdown>
         <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light">
           <i class="fa fa-user"></i><span class="caret"></span></a>
         <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary" role="menu">
-          <a class="dropdown-item waves-light" mdbWavesEffect href="#">Action</a>
-          <a class="dropdown-item waves-light" mdbWavesEffect href="#">Another action</a>
-          <a class="dropdown-item waves-light" mdbWavesEffect href="#">Something else here</a>
-          <div class="divider dropdown-divider"></div>
-          <a class="dropdown-item waves-light" mdbWavesEffect href="#">Separated link</a>
+          <a class="dropdown-item waves-light" mdbWavesEffect routerLink="/profile">پروفایل</a>
+          <a class="dropdown-item waves-light" mdbWavesEffect href="">بازی ها</a>
         </div>
+      </li>
+
+      <li *ngIf="userService.hasLoggedIn()"  class="nav-item" (click)="userService.logout()" >
+        <a class="nav-link waves-light" mdbWavesEffect>خروج</a>
+      </li>
+
+      <li class="nav-item" (click)="userService.logout()" >
+        <a routerLink="/profile" class="nav-link waves-light" mdbWavesEffect>ثبت نام</a>
+      </li>
+      <li class="nav-item" (click)="userService.logout()" >
+        <a routerLink="/signUp" class="nav-link waves-light" mdbWavesEffect>ورود</a>
       </li>
     </ul>
     <!--<i class="fa fa-user"></i>-->
@@ -26,25 +34,31 @@
     <!-- Links -->
     <ul class="navbar-nav mr-auto">
 
-      <li class="nav-item">
-        <a routerLink="/waitForGame" class="nav-link waves-light" mdbWavesEffect>درخواست بازی</a>
+      <li class="nav-item" *ngIf="userService.hasLoggedIn()">
+        <a routerLink="/createGame" class="nav-link waves-light" mdbWavesEffect>ساخت بازی</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link waves-light" mdbWavesEffect>Pricing</a>
+        <a routerLink="/listGame" class="nav-link waves-light" mdbWavesEffect>لیست بازی ها</a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="/users" class="nav-link waves-light" mdbWavesEffect>لیست کاربران</a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="/userCommentApprove" *ngIf="userService.isAdmin()" class="nav-link waves-light" mdbWavesEffect>کامنت های کاربران </a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="/gameCommentApprove" *ngIf="userService.isAdmin()" class="nav-link waves-light" mdbWavesEffect>کامنت های بازی ها</a>
       </li>
 
       <!-- Dropdown -->
-      <li class="nav-item dropdown" dropdown>
-        <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
-          Basic dropdown<span class="caret"></span></a>
-        <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary" role="menu">
-          <a class="dropdown-item waves-light" mdbWavesEffect href="#">Action</a>
-          <a class="dropdown-item waves-light" mdbWavesEffect href="#">Another action</a>
-          <a class="dropdown-item waves-light" mdbWavesEffect href="#">Something else here</a>
-          <div class="divider dropdown-divider"></div>
-          <a class="dropdown-item waves-light" mdbWavesEffect href="#">Separated link</a>
-        </div>
-      </li>
+      <!--<li *ngIf="userService.hasLoggedIn()" class="nav-item dropdown" dropdown>-->
+        <!--<a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>-->
+          <!--Basic dropdown<span class="caret"></span></a>-->
+        <!--<div *dropdownMenu class="dropdown-menu dropdown dropdown-primary" role="menu">-->
+          <!--<a class="dropdown-item waves-light" mdbWavesEffect href="/profile">پروفایل</a>-->
+          <!--<a class="dropdown-item waves-light" mdbWavesEffect href="#">بازی ها</a>-->
+        <!--</div>-->
+      <!--</li>-->
       <li class="nav-item active">
         <a class="nav-link waves-light" routerLink="/" mdbWavesEffect>خانه<span class="sr-only">(current)</span></a>
       </li>

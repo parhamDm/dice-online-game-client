@@ -12,6 +12,7 @@ import {IsAdminGuard} from "./core/guards/is-admin.guard";
 import {UserCommentsComponent} from "./modules/admin/user-comments/user-comments.component";
 import {CreateComponent} from "./modules/game/create/create.component";
 import {GameListComponent} from "./modules/game/game-list/game-list.component";
+import {MainPageComponent} from "./modules/main/main-page/main-page.component";
 
 const routes: Routes = [
   {
@@ -59,6 +60,10 @@ const routes: Routes = [
       {
         path: 'listGame',
         component: GameListComponent,
+      },
+      {
+        path: 'home',
+        component: MainPageComponent,
       },
     ]
   },

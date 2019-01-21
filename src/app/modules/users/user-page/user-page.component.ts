@@ -58,13 +58,19 @@ export class UserPageComponent implements OnInit {
 
   filterByScore(){
     this.elements.sort(function (a,b) {
-      return a.averageScore > b.averageScore;
+      return a.userOverAllScore < b.userOverAllScore;
     })
   }
 
   filterByGamesPlayed(){
     this.elements.sort(function (a,b) {
-      return a.totalPlays > b.totalPlays;
+      return a.totalPlays < b.totalPlays;
+    })
+  }
+
+  filterByGamesWon(){
+    this.elements.sort(function (a,b) {
+      return a.gamesWon < b.gamesWon;
     })
   }
 }

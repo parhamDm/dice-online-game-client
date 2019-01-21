@@ -29,6 +29,24 @@
   <!--</tfoot>-->
 <!--</table>-->
 <!--<button (click)="filter()">asdasdas</button>-->
+
+<div class="row col-md-12" style="margin: 3%">
+  <h3>
+    فیلتر بر اساس:
+  </h3>
+</div>
+<div class="row col-md-12" style="margin-bottom: 5px">
+  <div class="row col-md-2">
+    <button type="button" class="btn btn-secondary" (click)="filterByGamesPlayed()" style="margin: 2px">تعداد بازی ها</button>
+  </div>
+  <div class="row col-md-2">
+    <button type="button" class="btn btn-secondary" (click)="filterByScore()" style="margin: 2px">میانگین امتیاز</button>
+  </div>
+  <div class="row col-md-3">
+    <button type="button" class="btn btn-secondary" (click)="filterByGamesWon()" style="margin: 2px">تعداد بازی های انجام شده</button>
+  </div>
+</div>
+
 <div class="row">
   <div class="col-md-4 col-xs-2" *ngFor="let element of this.elements">
     <div class="card" style="text-align: center;margin: 5px">
@@ -48,8 +66,23 @@
         <!--Title-->
         <h4 class="card-title">{{element.username}}</h4>
         <!--Text-->
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        <a href="#" class="btn btn-primary" ripple-radius>Button</a>
+        <p class="card-text">میانگین امتیاز بازی:
+          {{element.userOverAllScore|number :'1.1-2'}}
+        </p>
+        <p class="card-text">نام و نام خانوادگی
+          {{element.firstName +' '+element.secondName}}
+        </p>
+        <p class="card-text">تعداد بازی های انجام شده
+          <br/>
+          {{element.totalPlays}}
+        </p>
+        <p *ngIf="element.online" class="card-text">آنلاین
+
+        </p>
+        <p *ngIf="!element.online" class="card-text">آفلاین
+
+        </p>
+
       </div>
       <!--/.Card content-->
 

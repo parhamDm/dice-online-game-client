@@ -1,0 +1,27 @@
+.center-image{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+.portrait {
+  object-fit: cover;
+  width:50px;
+  height:50px;
+}
+
+.special-btn {
+  background-color: DodgerBlue;
+  border: none;
+  color: white;
+  padding: 12px 16px;
+  font-size: 18px;
+  cursor: pointer;
+  margin: 2%;
+  width: 100%;
+  text-color: white;
+}
+
+.special-btn:hover {
+  background-color: RoyalBlue;
+}

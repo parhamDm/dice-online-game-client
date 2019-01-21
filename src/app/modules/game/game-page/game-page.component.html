@@ -14,7 +14,7 @@
         <img id="dice3" *ngIf="this.numberOfDices==4" class="dice" src="{{'/assets/dice/dice-'+dicesArray[3]+'.png'}}" alt="omg">
       </div>
       <div>
-        <img id="dice1" *ngIf="this.numberOfDices==2||this.numberOfDices==4"
+        <img id="dice1" *ngIf="(this.numberOfDices==2||this.numberOfDices==4)"
              class="dice" src="{{'/assets/dice/dice-'+dicesArray[1]+'.png'}}" alt="omg">
         <img id="dice2" *ngIf="this.numberOfDices==4" class="dice"
              src="{{'/assets/dice/dice-'+dicesArray[2]+'.png'}}" alt="omg">
@@ -37,7 +37,7 @@
       </div>
       <div class="score"></div>
     </div>
-    <div class="left">
+    <div class="left" [style.background-color]="this.isPlayerTurn ? 'white':'#F7F7F7'">
       <div class="text-inside-left">
         <div id="player1" class="player">
           PLAYER 1 <i id="i1" class="fa fa-circle"  style="visibility: hidden"></i>
@@ -52,7 +52,7 @@
       </div>
 
     </div>
-    <div class="right">
+    <div class="right" [style.background-color]="this.isPlayerTurn ? '#F7F7F7':'white'">
       <div class="text-inside-left">
         <div id="player2" class="player">
           PLAYER 2 <i id="i2" class="fa fa-circle" style="visibility: hidden"></i>
@@ -69,3 +69,69 @@
   </div>
 </div>
 <br/>
+
+
+<button type="button" mdbBtn color="default" rounded="true" data-toggle="modal" data-target="#basicExample"
+        (click)="frame.show()" mdbWavesEffect>Launch Modal</button>
+
+<div mdbModal #frame="mdbModal" class="modal fade" id="frameModalTop" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">{{gameStatus}}</h4>
+
+      </div>
+      <div class="modal-body mx-3">
+        <form dir="ltr" class="text-center border border-light p-5"
+              #loginForm="ngForm" (ngSubmit)="performComment(loginForm.form);">
+
+
+          <div class="mb-1">
+          <select [(ngModel)]="model.userScore" name="userScore"
+                  #userScore="ngModel" class="browser-default custom-select">
+            <option [ngValue]="1" selected>1</option>
+            <option [ngValue]="2">2</option>
+            <option [ngValue]="3">3</option>
+            <option [ngValue]="4">4</option>
+            <option [ngValue]="5">5</option>
+          </select>
+        </div>
+          <div class="mb-4">
+            <textarea type="text" id="userComment" class="form-control" placeholder="نظر شما در مورد بازیکن"
+                   [(ngModel)]="model.userComment" name="dicePerTurn"
+                   #userComment="ngModel"
+            ></textarea>
+
+          </div>
+          <div class="mb-1">
+            <select [(ngModel)]="model.gameScore" name="gameScore"
+                    #gameScore="ngModel" class="browser-default custom-select">
+              <option [ngValue]="1" selected>1</option>
+              <option [ngValue]="2">2</option>
+              <option [ngValue]="3">3</option>
+              <option [ngValue]="4">4</option>
+              <option [ngValue]="5">5</option>
+            </select>
+          </div>
+
+          <div class="mb-4">
+            <textarea type="number" id="dicePerTurn" class="form-control" placeholder="نظر شما در مورد بازی"
+                   [(ngModel)]="model.gameComment" name="dicePerTurn"
+                   #dicePerTurn="ngModel">
+            </textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary" [disabled]="!loginForm.valid">افزودن</button>
+
+
+        </form>
+
+
+      </div>
+      <!--<div class="modal-footer d-flex justify-content-center">-->
+        <!--<button mdbBtn color="default" class="waves-light" mdbWavesEffect>Login</button>-->
+      <!--</div>-->
+    </div>
+  </div>
+</div>
