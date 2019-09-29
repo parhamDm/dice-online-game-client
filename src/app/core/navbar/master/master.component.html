@@ -8,25 +8,22 @@
   <!-- Collapsible content -->
   <links>
 
-    <ul  *ngIf="userService.hasLoggedIn()"  class="navbar-nav ml-auto nav-flex-icons">
-      <li class="nav-item dropdown" dropdown>
+    <ul class="navbar-nav ml-auto nav-flex-icons">
+      <li *ngIf="userService.hasLoggedIn()" class="nav-item dropdown" dropdown>
         <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light">
           <i class="fa fa-user"></i><span class="caret"></span></a>
         <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary" role="menu">
           <a class="dropdown-item waves-light" mdbWavesEffect routerLink="/profile">پروفایل</a>
           <a class="dropdown-item waves-light" mdbWavesEffect href="">بازی ها</a>
+          <a class="dropdown-item waves-light" (click)="userService.logout()" mdbWavesEffect href="">خروج</a>
         </div>
       </li>
 
-      <li *ngIf="userService.hasLoggedIn()"  class="nav-item" (click)="userService.logout()" >
-        <a class="nav-link waves-light" mdbWavesEffect>خروج</a>
+      <li class="nav-item">
+        <a routerLink="/signUp"  *ngIf="!userService.hasLoggedIn()" class="nav-link waves-light" mdbWavesEffect>ثبت نام</a>
       </li>
-
-      <li class="nav-item" (click)="userService.logout()" >
-        <a routerLink="/profile" class="nav-link waves-light" mdbWavesEffect>ثبت نام</a>
-      </li>
-      <li class="nav-item" (click)="userService.logout()" >
-        <a routerLink="/signUp" class="nav-link waves-light" mdbWavesEffect>ورود</a>
+      <li class="nav-item" *ngIf="!userService.hasLoggedIn()" >
+        <a routerLink="/login" class="nav-link waves-light" mdbWavesEffect>ورود</a>
       </li>
     </ul>
     <!--<i class="fa fa-user"></i>-->
@@ -34,7 +31,7 @@
     <!-- Links -->
     <ul class="navbar-nav mr-auto">
 
-      <li class="nav-item" *ngIf="userService.hasLoggedIn()">
+      <li class="nav-item" *ngIf="userService.hasLoggedIn()&&!userService.isAdmin()">
         <a routerLink="/createGame" class="nav-link waves-light" mdbWavesEffect>ساخت بازی</a>
       </li>
       <li class="nav-item">
@@ -60,7 +57,7 @@
         <!--</div>-->
       <!--</li>-->
       <li class="nav-item active">
-        <a class="nav-link waves-light" routerLink="/" mdbWavesEffect>خانه<span class="sr-only">(current)</span></a>
+        <a class="nav-link waves-light" routerLink="/home" mdbWavesEffect>خانه<span class="sr-only">(current)</span></a>
       </li>
     </ul>
     <!-- Links -->

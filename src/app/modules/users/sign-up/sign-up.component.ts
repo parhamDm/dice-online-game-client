@@ -47,7 +47,7 @@ export class SignUpComponent implements OnInit {
         //valid
         localStorage.setItem("token","Bearer "+ model.token);
         localStorage.setItem("role",model.role);
-        // this.router.navigateByUrl('/');
+        this.router.navigateByUrl('/home');
       }
       console.log(model)
     });

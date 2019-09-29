@@ -4,6 +4,7 @@ import {GameListModel} from "../../../core/models/GameListModel";
 import {forEach} from "@angular/router/src/utils/collection";
 import {GameComment} from "../../../core/models/GameComment";
 import {MDBModalRef, MDBModalService} from "angular-bootstrap-md";
+import {UsermanagementService} from "../../../core/services/usermanagement.service";
 
 @Component({
   selector: 'app-game-list',
@@ -17,7 +18,8 @@ export class GameListComponent implements OnInit {
   @ViewChild('Modal2') modal2: MDBModalService;
   comments: Array<GameComment>=[];
   gameId=0;
-  constructor(private gameService:GameService) { }
+  constructor(private gameService:GameService,
+              public userService:UsermanagementService) { }
 
   ngOnInit() {
     this.loadGames();

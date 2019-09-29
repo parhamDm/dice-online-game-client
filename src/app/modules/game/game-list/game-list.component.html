@@ -51,7 +51,7 @@
           {{element.timesPlayed}}
         </p>
         <div>
-          <button class="btn btn-secondary" style="margin: 2px"
+          <button class="btn btn-secondary" style="margin: 2px" *ngIf="userService.hasLoggedIn()"
                   (click)="startGame(element.id)">شروع بازی</button>
         </div>
         <div>
